@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Body Gym Gallery</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+<style>
+/* ===== General Reset ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Arial', sans-serif; background: #fff; color: #222; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== Navbar ===== */
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 20px; position: sticky; top: 0; width: 100%; z-index: 100;
+  background: rgba(255,255,255,0.25); backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.logo { font-size: 26px; font-weight: 700; color: #2c2c2c; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 25px; font-weight: 500; flex-wrap: wrap; }
+.nav-links a:hover { color: #555; }
+
+/* ===== Hero ===== */
+.hero { text-align: center; padding: 50px 20px 20px 20px; }
+.hero h1 { font-size: 42px; color: #2c2c2c; margin-bottom: 40px; }
+
+/* ===== Gallery Section ===== */
+.gallery {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+.gallery h2 { text-align: center; font-size: 34px; margin-bottom: 40px; }
+
+/* ===== Images side by side ===== */
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.gallery-item {
+  flex: 1 1 250px; /* flexible width */
+  max-width: 300px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+.gallery-item.visible { opacity: 1; transform: translateY(0); }
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* ===== Contact Overlay ===== */
+.contact-overlay {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(255,255,255,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity 0.5s ease;
+  z-index:999;
+}
+.contact-overlay.active { opacity:1; pointer-events: all; }
+.contact-overlay a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  font-size: 30px;
+  transition: transform 0.3s ease;
+}
+.contact-overlay a:hover { transform: scale(1.2); }
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) { .gallery-item img { height: 250px; } }
+@media (max-width: 600px) { .gallery-item { max-width: 200px; } .gallery-item img { height: 200px; } }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">STAR BODY GYM</div>
+  <div class="nav-links">
+    <a href="star.html#top">Home</a>
+    <a href="star.html#about">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="clubs.html">Clubs</a>
+    <a href="#" id="contact-btn">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Our Gallery</h1>
+</div>
+
+<!-- Gallery Images -->
+<div class="gallery">
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="star1.jpg" alt="Gym Image 1"></div>
+    <div class="gallery-item"><img src="star2.jpg" alt="Gym Image 2"></div>
+    <div class="gallery-item"><img src="star3.jpg" alt="Gym Image 3"></div>
+    <div class="gallery-item"><img src="star4.jpg" alt="Gym Image 4"></div>
+    <div class="gallery-item"><img src="star5.jpg" alt="Gym Image 5"></div>
+    <div class="gallery-item"><img src="star6.jpg" alt="Gym Image 6"></div>
+    <div class="gallery-item"><img src="star7.jpg" alt="Gym Image 7"></div>
+  </div>
+</div>
+
+<!-- Contact Overlay -->
+<div class="contact-overlay" id="contact-overlay">
+  <a href="tel:+97145463346"><i class="fas fa-phone"></i></a>
+  <a href="https://wa.me/97145463346" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.instagram.com/starbodygym_naddalhamar/" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.google.com/maps/place/star+body+gym+nad+al+hamar" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+</div>
+
+<footer style="text-align:center; padding:20px 0; background:#fff; font-size:15px;">
+  Copyright © 2025 STAR BODY GYM - All Rights Reserved.
+</footer>
+
+<script>
+// Fade-in gallery images
+const galleryItems = document.querySelectorAll('.gallery-item');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+    else{ entry.target.classList.remove('visible'); }
+  });
+},{threshold:0.2});
+galleryItems.forEach(item=>observer.observe(item));
+
+// Contact overlay
+const contactBtn = document.getElementById('contact-btn');
+const contactOverlay = document.getElementById('contact-overlay');
+contactBtn.addEventListener('click', e=>{ e.preventDefault(); contactOverlay.classList.add('active'); });
+contactOverlay.addEventListener('click', ()=> contactOverlay.classList.remove('active'));
+contactOverlay.querySelectorAll('a').forEach(icon => icon.addEventListener('click', e => e.stopPropagation()));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Body Gym Nad Al Hamar</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+<style>
+/* ===== General Reset ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+  font-family: 'Arial', sans-serif;
+  background: #fff;
+  color: #222;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+
+/* ===== Navbar ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+.logo { font-size: 26px; font-weight: 700; color: #2c2c2c; letter-spacing: 1px; }
+.nav-links { display: flex; gap: 25px; font-weight: 500; flex-wrap: wrap; }
+.nav-links a:hover { color: #555; }
+
+/* ===== Hero ===== */
+.hero {
+  text-align: center;
+  padding: 50px 20px 20px 20px;
+}
+.hero h1 {
+  font-size: 42px;
+  color: #2c2c2c;
+  margin-bottom: 40px;
+}
+
+/* ===== Gallery (Side paragraphs, scroll animation) ===== */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+}
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+.gallery-item.visible { opacity: 1; transform: translateY(0); }
+.gallery-item img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.gallery-item.right { flex-direction: row-reverse; text-align: right; }
+.gallery-item p { font-size: 20px; line-height: 1.6; max-width: 500px; }
+
+/* ===== About Section ===== */
+section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+section h2 { font-size: 34px; margin-bottom: 25px; text-align: center; }
+.about p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  font-size: 22px;
+  text-align: center;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 40px;
+}
+.flex-container div {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+  background: transparent;
+}
+.flex-container h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.flex-container p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* ===== Map Section ===== */
+.map-container {
+  position: relative;
+  margin: 40px 0;
+  height: 450px;
+  text-align: center;
+}
+iframe { width: 100%; height: 100%; border: 0; }
+.map-button {
+  margin-bottom: 10px;
+  background: #2c2c2c;
+  color: #fff;
+  padding: 10px 22px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ===== Contact Overlay ===== */
+.contact-overlay {
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(255,255,255,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity 0.5s ease;
+  z-index:999;
+}
+.contact-overlay.active {
+  opacity:1;
+  pointer-events: all;
+}
+.contact-overlay a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  font-size: 30px;
+  transition: transform 0.3s ease;
+}
+.contact-overlay a:hover { transform: scale(1.2); }
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .gallery-item { flex-direction: column; text-align: center; }
+  .gallery-item.right { flex-direction: column; }
+  .gallery-item img { width: 250px; height: 250px; }
+  .gallery-item p { font-size: 18px; }
+  .flex-container { flex-direction: column; gap: 30px; }
+}
+@media (max-width: 600px) {
+  nav { flex-direction: column; gap: 10px; padding: 15px; }
+  .nav-links { justify-content: center; gap: 15px; }
+  .hero h1 { font-size: 28px; }
+  .gallery-item img { width: 200px; height: 200px; }
+  .gallery-item p { font-size: 16px; }
+  section { padding: 40px 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Anchor for top -->
+<div id="top"></div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">STAR BODY GYM</div>
+  <div class="nav-links">
+    <a href="#top">Home</a>
+    <a href="#about">About Us</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="clubs.html">Clubs</a>
+    <a href="#" id="contact-btn">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero" id="home">
+  <h1>Star Body Gym Nad Al Hamar</h1>
+</div>
+
+<!-- Gallery Section -->
+<div class="gallery">
+  <div class="gallery-item right">
+    <img src="man.jpg" alt="Gym Image 1">
+    <p>Our state-of-the-art equipment ensures every workout is efficient and safe. Train like a pro with expert guidance.</p>
+  </div>
+  <div class="gallery-item left">
+    <img src="oh.jpg" alt="Gym Image 2">
+    <p>Functional training zones and dedicated spaces for cardio and strength make every visit productive.</p>
+  </div>
+  <div class="gallery-item right">
+    <img src="skibs.jpg" alt="Gym Image 3">
+    <p>Group sessions and personal training keep you motivated and help achieve your goals faster.</p>
+  </div>
+  <div class="gallery-item left">
+    <img src="wo.jpg" alt="Gym Image 4">
+    <p>Our trainers focus on technique, consistency, and progression, so your fitness journey is safe and effective.</p>
+  </div>
+</div>
+
+<!-- About Section -->
+<section id="about">
+  <h2>About Us</h2>
+  <div class="about">
+    <p>At Star Body Gym, we believe in more than just lifting weights. We build confidence, discipline, and a lifestyle that transforms both body and mind. Our facility is for beginners to professional athletes with high-end equipment, expert trainers, and a motivating environment.</p>
+  </div>
+  <div class="flex-container">
+    <div>
+      <h3>Training Expertise</h3>
+      <p>Certified trainers provide personalized plans combining strength, functional exercises, and nutrition advice tailored to your body and goals.</p>
+    </div>
+    <div>
+      <h3>Your Success is Our Goal</h3>
+      <p>We go beyond workouts — offering guidance, motivation, and accountability. Every member feels supported and empowered to reach their true potential.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Map Section -->
+<section id="clubs">
+  <h2 style="text-align:center;">Find Us</h2>
+  <button class="map-button" onclick="window.open('https://www.google.com/maps/place/star+body+gym+nad+al+hamar','_blank')">Get Directions <i class="fas fa-map-marker-alt"></i></button>
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.967436352892!2d55.34976031500229!3d25.189228983888045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5caea7ec41dd%3A0x52cc52fe983fa387!2sStar%20Body%20Gym%20Nad%20Al%20Hamar!5e0!3m2!1sen!2sae!4v1697898025936!5m2!1sen!2sae"
+      allowfullscreen=""
+      loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- Contact Overlay -->
+<div class="contact-overlay" id="contact-overlay">
+  <a href="tel:+97145463346"><i class="fas fa-phone"></i></a>
+  <a href="https://wa.me/97145463346" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://www.instagram.com/starbodygym_naddalhamar/" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.google.com/maps/place/star+body+gym+nad+al+hamar" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+</div>
+
+<!-- Footer -->
+<footer style="text-align:center; padding:20px 0; background:#fff; font-size:15px;">
+  Copyright © 2025 STAR BODY GYM - All Rights Reserved.
+</footer>
+
+<script>
+// Contact Overlay
+const contactBtn = document.getElementById('contact-btn');
+const contactOverlay = document.getElementById('contact-overlay');
+contactBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  contactOverlay.classList.add('active');
+});
+contactOverlay.addEventListener('click', () => {
+  contactOverlay.classList.remove('active');
+});
+const overlayIcons = contactOverlay.querySelectorAll('a');
+overlayIcons.forEach(icon => icon.addEventListener('click', e => e.stopPropagation()));
+
+// Gallery scroll animation
+const galleryItems = document.querySelectorAll('.gallery-item');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.2 });
+galleryItems.forEach(item => observer.observe(item));
+</script>
+
+</body>
+</html>
