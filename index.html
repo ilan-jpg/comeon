@@ -321,6 +321,33 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 galleryItems.forEach(item => observer.observe(item));
 </script>
+/* === Navbar Responsive Fix (Always fits in one line) === */
+@media (max-width: 1024px) {
+  nav {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px 12px;
+  }
+  .logo {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    flex-wrap: nowrap;
+    gap: 10px;
+    flex-shrink: 1;
+  }
+  .nav-links a {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 600px) {
+  .logo { font-size: 18px; }
+  .nav-links a { font-size: 13px; }
+  nav { padding: 8px 10px; }
+}
+
 
 </body>
 </html>
