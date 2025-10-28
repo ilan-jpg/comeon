@@ -12,108 +12,223 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
 /* ===== General Reset ===== */
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
-body { font-family:'Arial',sans-serif; background:#fff; color:#222; overflow-x:hidden; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-a { text-decoration:none; color:inherit; touch-action:manipulation; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { 
+  font-family: 'Arial', sans-serif;
+  background: #fff;
+  color: #222;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { text-decoration: none; color: inherit; touch-action: manipulation; }
 
 /* ===== Navbar ===== */
 nav {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 15px 20px; position: sticky; top:0; width:100%; z-index:100;
-  background: rgba(255,255,255,0.25); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-  border-bottom:1px solid rgba(255,255,255,0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
 }
-.logo { font-size:26px; font-weight:700; color:#2c2c2c; letter-spacing:1px; }
-.nav-links { display:flex; gap:25px; font-weight:500; flex-wrap:nowrap; align-items:center; }
-.nav-links a:hover { color:#555; }
-
-/* Hamburger */
-.hamburger { display:none; font-size:28px; cursor:pointer; color:#2c2c2c; }
+.logo { font-size: 26px; font-weight: 700; color: #2c2c2c; letter-spacing: 1px; }
+.nav-links { 
+  display: flex; 
+  gap: 25px; 
+  font-weight: 500; 
+  flex-wrap: nowrap; /* prevent wrapping */
+  justify-content: flex-end; 
+  white-space: nowrap; /* keep all links in one line */
+}
+.nav-links a:hover { color: #555; }
 
 /* ===== Hero ===== */
-.hero { text-align:center; padding:50px 20px 20px 20px; }
-.hero h1 { font-size:42px; color:#2c2c2c; margin-bottom:40px; word-wrap:break-word; }
+.hero {
+  text-align: center;
+  padding: 50px 20px 20px 20px;
+}
+.hero h1 {
+  font-size: 42px;
+  color: #2c2c2c;
+  margin-bottom: 40px;
+  word-wrap: break-word;
+}
 
 /* ===== Gallery (Side paragraphs, scroll animation) ===== */
-.gallery { display:flex; flex-direction:column; gap:50px; max-width:1200px; margin:0 auto 60px; width:100%; padding:0 10px; }
-.gallery-item { display:flex; align-items:center; gap:30px; opacity:0; transform:translateY(50px); transition: all 0.8s ease; will-change: transform, opacity; }
-.gallery-item.visible { opacity:1; transform:translateY(0); }
-.gallery-item img { width:300px; height:300px; object-fit:cover; border-radius:14px; }
-.gallery-item.right { flex-direction: row-reverse; text-align:right; }
-.gallery-item p { font-size:20px; line-height:1.6; max-width:500px; }
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  width: 100%;
+  padding: 0 10px;
+}
+.gallery-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+  will-change: transform, opacity;
+}
+.gallery-item.visible { opacity: 1; transform: translateY(0); }
+.gallery-item img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.gallery-item.right { flex-direction: row-reverse; text-align: right; }
+.gallery-item p { font-size: 20px; line-height: 1.6; max-width: 500px; }
 
 /* ===== About Section ===== */
-section { padding:60px 20px; max-width:1200px; margin:auto; }
-section h2 { font-size:34px; margin-bottom:25px; text-align:center; }
-.about p { margin-bottom:20px; line-height:1.8; font-size:22px; text-align:center; }
-.flex-container { display:flex; flex-wrap:wrap; gap:50px; margin-top:40px; justify-content:center; }
-.flex-container div { flex:1; min-width:280px; text-align:center; background:transparent; }
-.flex-container h3 { font-size:24px; margin-bottom:15px; }
-.flex-container p { font-size:18px; line-height:1.7; }
+section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+section h2 { font-size: 34px; margin-bottom: 25px; text-align: center; }
+.about p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  font-size: 22px;
+  text-align: center;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin-top: 40px;
+  justify-content: center;
+}
+.flex-container div {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+  background: transparent;
+}
+.flex-container h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.flex-container p {
+  font-size: 18px;
+  line-height: 1.7;
+}
 
 /* ===== Map Section ===== */
-.map-container { position:relative; margin:40px 0; height:450px; text-align:center; overflow:hidden; border-radius:10px; }
-iframe { width:100%; height:100%; border:0; }
-.map-button { margin-bottom:10px; background:#2c2c2c; color:#fff; padding:10px 22px; border:none; cursor:pointer; font-weight:600; border-radius:5px; display:inline-flex; align-items:center; gap:10px; transition:background 0.3s ease; }
-.map-button:hover { background:#444; }
+.map-container {
+  position: relative;
+  margin: 40px 0;
+  height: 450px;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+iframe { width: 100%; height: 100%; border: 0; }
+.map-button {
+  margin-bottom: 10px;
+  background: #2c2c2c;
+  color: #fff;
+  padding: 10px 22px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s ease;
+}
+.map-button:hover { background: #444; }
 
 /* ===== Contact Overlay ===== */
 .contact-overlay {
-  position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(255,255,255,0.85);
-  display:flex; justify-content:center; align-items:center; flex-direction:column; gap:40px;
-  opacity:0; pointer-events:none; transition:opacity 0.5s ease; z-index:999;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(255,255,255,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity 0.5s ease;
+  z-index:999;
 }
-.contact-overlay.active { opacity:1; pointer-events: all; }
+.contact-overlay.active {
+  opacity:1;
+  pointer-events: all;
+}
 .contact-overlay a {
-  display:flex; justify-content:center; align-items:center; width:70px; height:70px; border-radius:50%;
-  background:black; color:white; font-size:30px; transition:transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: black;
+  color: white;
+  font-size: 30px;
+  transition: transform 0.3s ease;
+  will-change: transform;
 }
-.contact-overlay a:hover { transform:scale(1.2); }
+.contact-overlay a:hover { transform: scale(1.2); }
 
 /* ===== Responsive ===== */
-@media (max-width:1280px) { .hero h1 { font-size:36px; } }
-@media (max-width:1024px) { 
-  .gallery-item { flex-direction:column; text-align:center; } 
-  .gallery-item.right { flex-direction:column; } 
-  .gallery-item img { width:250px; height:250px; } 
-  .gallery-item p { font-size:18px; } 
-  .flex-container { flex-direction:column; gap:30px; } 
+@media (max-width: 1280px) { .hero h1 { font-size: 36px; } }
+@media (max-width: 1024px) {
+  .gallery-item { flex-direction: column; text-align: center; }
+  .gallery-item.right { flex-direction: column; }
+  .gallery-item img { width: 250px; height: 250px; }
+  .gallery-item p { font-size: 18px; }
+  .flex-container { flex-direction: column; gap: 30px; }
+  nav { flex-wrap: nowrap; }
+  .nav-links { gap: 15px; }
+  .nav-links a { font-size: 14px; }
 }
-@media (max-width:768px) { 
-  .hero h1 { font-size:30px; } 
-  .nav-links { position:fixed; top:65px; right:-100%; flex-direction:column; background: rgba(255,255,255,0.95); height:100vh; width:200px; gap:20px; padding:50px 20px; transition:right 0.3s ease; }
-  .nav-links.active { right:0; }
-  .hamburger { display:block; }
+@media (max-width: 768px) { .hero h1 { font-size: 30px; } }
+@media (max-width: 600px) { 
+  .hero h1 { font-size: 28px; }
+  .gallery-item img { width: 200px; height: 200px; }
+  .gallery-item p { font-size: 16px; }
+  section { padding: 40px 10px; }
+  .logo { font-size: 18px; }
+  .nav-links a { font-size: 13px; }
+  nav { padding: 8px 10px; }
 }
-@media (max-width:600px) { 
-  .hero h1 { font-size:28px; } 
-  .gallery-item img { width:200px; height:200px; } 
-  section { padding:40px 10px; } 
+@media (max-width: 375px) {
+  .logo { font-size: 22px; }
+  .nav-links { gap: 10px; }
+  .map-button { font-size: 14px; padding: 8px 18px; }
+  .gallery-item p { font-size: 15px; }
 }
-@media (max-width:375px) { 
-  .logo { font-size:22px; } 
-  .gallery-item img { height:190px; } 
-  .map-button { font-size:14px; padding:8px 18px; }
-}
-@media (min-width:1600px) { body { max-width:1800px; margin:0 auto; } }
+@media (min-width: 1600px) { body { max-width: 1800px; margin: 0 auto; } }
 </style>
 </head>
 <body>
 
+<!-- Anchor for top -->
 <div id="top"></div>
 
 <!-- Navbar -->
 <nav>
   <div class="logo">STAR BODY GYM</div>
-  <div class="nav-links" id="nav-links">
+  <div class="nav-links">
     <a href="#top">Home</a>
     <a href="#about">About Us</a>
     <a href="gallery.html">Gallery</a>
     <a href="clubs.html">Clubs</a>
     <a href="#" id="contact-btn">Contact</a>
   </div>
-  <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
 </nav>
 
 <!-- Hero -->
@@ -166,7 +281,8 @@ iframe { width:100%; height:100%; border:0; }
   <div class="map-container">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.967436352892!2d55.34976031500229!3d25.189228983888045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5caea7ec41dd%3A0x52cc52fe983fa387!2sStar%20Body%20Gym%20Nad%20Al%20Hamar!5e0!3m2!1sen!2sae!4v1697898025936!5m2!1sen!2sae"
-      allowfullscreen="" loading="lazy"></iframe>
+      allowfullscreen=""
+      loading="lazy"></iframe>
   </div>
 </section>
 
@@ -209,13 +325,6 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.2 });
 galleryItems.forEach(item => observer.observe(item));
-
-// Hamburger toggle
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('active');
-});
 </script>
 
 </body>
