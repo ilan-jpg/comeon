@@ -45,29 +45,12 @@ nav {
 
 /* ===== Hero ===== */
 .hero { text-align: center; padding: 50px 20px 20px 20px; }
-.hero h1 {
-  font-size: 42px;
-  color: #2c2c2c;
-  margin-bottom: 40px;
-  word-wrap: break-word;
-}
+.hero h1 { font-size: 42px; color: #2c2c2c; margin-bottom: 40px; word-wrap: break-word; }
 
 /* ===== Gallery Section ===== */
-.gallery {
-  max-width: 1200px;
-  margin: 0 auto 60px;
-  padding: 0 20px;
-  width: 100%;
-}
+.gallery { max-width: 1200px; margin: 0 auto 60px; padding: 0 20px; width: 100%; }
 .gallery h2 { text-align: center; font-size: 34px; margin-bottom: 40px; }
-
-/* ===== Images side by side ===== */
-.gallery-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
+.gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
 .gallery-item {
   flex: 1 1 250px;
   max-width: 300px;
@@ -77,13 +60,7 @@ nav {
   will-change: transform, opacity;
 }
 .gallery-item.visible { opacity: 1; transform: translateY(0); }
-.gallery-item img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 14px;
-  display: block;
-}
+.gallery-item img { width: 100%; height: 300px; object-fit: cover; border-radius: 14px; display: block; }
 
 /* ===== Contact Overlay ===== */
 .contact-overlay {
@@ -118,62 +95,48 @@ nav {
 .contact-overlay a:hover { transform: scale(1.2); }
 
 /* ===== Responsive ===== */
-@media (max-width: 1280px) {
-  .hero h1 { font-size: 36px; }
-}
+@media (max-width: 1280px) { .hero h1 { font-size: 36px; } }
 @media (max-width: 1024px) {
   .gallery-item img { height: 250px; }
 }
 @media (max-width: 768px) {
+  nav { flex-direction: row; justify-content: space-between; padding: 15px; }
+  .nav-links { gap: 15px; }
   .hero h1 { font-size: 30px; }
 }
 @media (max-width: 600px) {
+  .logo { font-size: 22px; line-height: 1.1; text-align: center; }
+  .hero h1 { font-size: 28px; }
   .gallery-item { max-width: 200px; }
   .gallery-item img { height: 200px; }
-  .hero h1 { font-size: 28px; }
 }
 @media (max-width: 375px) {
-  .logo { font-size: 22px; }
+  .logo { font-size: 20px; }
+  .nav-links { gap: 10px; }
   .gallery-item img { height: 190px; }
 }
-@media (min-width: 1600px) {
-  body { max-width: 1800px; margin: 0 auto; }
-}
+@media (min-width: 1600px) { body { max-width: 1800px; margin: 0 auto; } }
 
-/* === Navbar Responsive Fix (Always fits in one line) === */
+/* === Navbar Responsive Fix (One line) === */
 @media (max-width: 1024px) {
-  nav {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    padding: 10px 12px;
-  }
-  .logo {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .nav-links {
-    flex-wrap: nowrap;
-    gap: 12px;
-    flex-shrink: 1;
-  }
-  .nav-links a {
-    font-size: 14px;
-    white-space: nowrap;
-  }
+  nav { flex-wrap: nowrap; justify-content: space-between; padding: 10px 12px; }
+  .logo { flex-shrink: 0; }
+  .nav-links { flex-wrap: nowrap; gap: 10px; flex-shrink: 1; }
+  .nav-links a { font-size: 14px; white-space: nowrap; }
 }
-@media (max-width: 600px) {
-  .logo { font-size: 18px; }
-  .nav-links a { font-size: 13px; }
-  nav { padding: 8px 10px; }
-}
+@media (max-width: 600px) { .nav-links a { font-size: 13px; } nav { padding: 8px 10px; } }
+
 </style>
 </head>
-
 <body>
 
 <!-- Navbar -->
 <nav>
-  <div class="logo">STAR BODY GYM</div>
+  <div class="logo">
+    STAR<br>
+    BODY<br>
+    GYM
+  </div>
   <div class="nav-links">
     <a href="index.html#top">Home</a>
     <a href="index.html#about">About Us</a>
@@ -209,6 +172,7 @@ nav {
   <a href="https://www.google.com/maps/place/star+body+gym+nad+al+hamar" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
 </div>
 
+<!-- Footer -->
 <footer style="text-align:center; padding:20px 0; background:#fff; font-size:15px;">
   Copyright © 2025 STAR BODY GYM - All Rights Reserved.
 </footer>
@@ -218,8 +182,7 @@ nav {
 const galleryItems = document.querySelectorAll('.gallery-item');
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
-    else{ entry.target.classList.remove('visible'); }
+    entry.isIntersecting ? entry.target.classList.add('visible') : entry.target.classList.remove('visible');
   });
 },{threshold:0.2});
 galleryItems.forEach(item=>observer.observe(item));
@@ -228,7 +191,7 @@ galleryItems.forEach(item=>observer.observe(item));
 const contactBtn = document.getElementById('contact-btn');
 const contactOverlay = document.getElementById('contact-overlay');
 contactBtn.addEventListener('click', e=>{ e.preventDefault(); contactOverlay.classList.add('active'); });
-contactOverlay.addEventListener('click', ()=> contactOverlay.classList.remove('active'));
+contactOverlay.addEventListener('click', ()=>contactOverlay.classList.remove('active'));
 contactOverlay.querySelectorAll('a').forEach(icon => icon.addEventListener('click', e => e.stopPropagation()));
 </script>
 </body>
