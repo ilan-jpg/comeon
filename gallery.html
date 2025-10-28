@@ -125,8 +125,6 @@ nav {
   .gallery-item img { height: 250px; }
 }
 @media (max-width: 768px) {
-  nav { flex-direction: column; gap: 10px; padding: 15px; }
-  .nav-links { justify-content: center; gap: 15px; }
   .hero h1 { font-size: 30px; }
 }
 @media (max-width: 600px) {
@@ -136,14 +134,41 @@ nav {
 }
 @media (max-width: 375px) {
   .logo { font-size: 22px; }
-  .nav-links { gap: 10px; }
   .gallery-item img { height: 190px; }
 }
 @media (min-width: 1600px) {
   body { max-width: 1800px; margin: 0 auto; }
 }
+
+/* === Navbar Responsive Fix (Always fits in one line) === */
+@media (max-width: 1024px) {
+  nav {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px 12px;
+  }
+  .logo {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    flex-wrap: nowrap;
+    gap: 12px;
+    flex-shrink: 1;
+  }
+  .nav-links a {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 600px) {
+  .logo { font-size: 18px; }
+  .nav-links a { font-size: 13px; }
+  nav { padding: 8px 10px; }
+}
 </style>
 </head>
+
 <body>
 
 <!-- Navbar -->
@@ -206,33 +231,5 @@ contactBtn.addEventListener('click', e=>{ e.preventDefault(); contactOverlay.cla
 contactOverlay.addEventListener('click', ()=> contactOverlay.classList.remove('active'));
 contactOverlay.querySelectorAll('a').forEach(icon => icon.addEventListener('click', e => e.stopPropagation()));
 </script>
-/* === Navbar Responsive Fix (Always fits in one line) === */
-@media (max-width: 1024px) {
-  nav {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    padding: 10px 12px;
-  }
-  .logo {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .nav-links {
-    flex-wrap: nowrap;
-    gap: 10px;
-    flex-shrink: 1;
-  }
-  .nav-links a {
-    font-size: 14px;
-    white-space: nowrap;
-  }
-}
-@media (max-width: 600px) {
-  .logo { font-size: 18px; }
-  .nav-links a { font-size: 13px; }
-  nav { padding: 8px 10px; }
-}
-
-
 </body>
 </html>
