@@ -13,10 +13,9 @@ body{font-family:'Arial',sans-serif;background:#fff;color:#222;overflow-x:hidden
 /* ===== Navbar ===== */
 nav{
   display:flex;
-  flex-wrap:wrap;
   justify-content:space-between;
   align-items:center;
-  padding:15px 20px;
+  padding:10px 30px;
   position:sticky;
   top:0;
   width:100%;
@@ -24,49 +23,86 @@ nav{
   background:rgba(255,255,255,0.25);
   backdrop-filter:blur(15px);
   border-bottom:1px solid rgba(255,255,255,0.3);
+  flex-wrap:nowrap;
+  gap:10px;
 }
-.logo{font-size:26px;font-weight:700;letter-spacing:1px;flex-shrink:0;}
-.nav-links{display:flex;flex-wrap:wrap;gap:15px;font-weight:500;}
-.nav-links a{color:#2c2c2c;text-decoration:none;}
+.logo{
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:0.5px;
+  white-space:nowrap;
+}
+.nav-links{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:18px;
+  flex-wrap:nowrap;
+  flex:1;
+  min-width:0;
+}
+.nav-links a{
+  color:#2c2c2c;
+  text-decoration:none;
+  font-weight:500;
+  font-size:16px;
+  white-space:nowrap;
+}
 .nav-links a:hover{color:#555;transition:.3s;}
 
-/* ===== Hero ===== */
-.hero{
-  text-align:center;
-  padding:50px 20px 20px 20px;
+/* On smaller devices, slightly shrink text and spacing */
+@media(max-width:768px){
+  nav{padding:8px 20px;}
+  .logo{font-size:20px;}
+  .nav-links{gap:12px;}
+  .nav-links a{font-size:14px;}
 }
-.hero h1{
-  font-size:42px;
-  color:#2c2c2c;
-  line-height:1.2;
+@media(max-width:480px){
+  .logo{font-size:18px;}
+  .nav-links{gap:8px;}
+  .nav-links a{font-size:13px;}
 }
 
 /* ===== Gallery Section ===== */
 .gallery-section{
   text-align:center;
-  margin:40px auto;
-  padding:0 10px;
+  margin:30px auto;
+  padding:0 15px;
+  opacity:0;
+  transition:opacity 1s ease;
 }
+.gallery-section.fade-in{opacity:1;}
+.gallery-section.fade-out{opacity:0;}
 .gallery-section h2{
-  font-size:36px;
-  margin-bottom:30px;
+  font-size:32px;
+  margin-bottom:25px;
   color:#2c2c2c;
 }
+
+/* ===== Gallery Layout ===== */
 .gallery{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
   justify-items:center;
+  gap:15px; /* tighter spacing */
 }
+.first-row{
+  grid-template-columns:repeat(4,1fr);
+  margin-bottom:25px;
+}
+.second-row{
+  grid-template-columns:repeat(3,1fr);
+}
+
+/* ===== Gallery Items ===== */
 .gallery-item{
   width:100%;
-  max-width:260px;
-  height:260px;
+  max-width:240px;
+  height:240px;
   overflow:hidden;
   border-radius:14px;
   opacity:0;
   transform:translateY(30px);
-  transition:all 0.6s ease;
+  transition:all 0.8s ease;
 }
 .gallery-item.visible{opacity:1;transform:translateY(0);}
 .gallery-item img{
@@ -76,62 +112,61 @@ nav{
   border-radius:14px;
 }
 
-/* ===== Contact Overlay Fullscreen Centered ===== */
+/* ===== Contact Overlay ===== */
 .contact-overlay{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(255,255,255,0.85);
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(255,255,255,0.85);
   display:flex;
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  gap:30px;
+  gap:25px;
   z-index:999;
   opacity:0;
   pointer-events:none;
   transition:opacity 0.4s ease;
 }
-.contact-overlay.active{
-  opacity:1;
-  pointer-events:all;
-}
+.contact-overlay.active{opacity:1;pointer-events:all;}
 .contact-overlay a{
   display:flex;
   justify-content:center;
   align-items:center;
-  width:70px;
-  height:70px;
+  width:65px;height:65px;
   border-radius:50%;
-  background:black;
-  color:white;
-  font-size:30px;
+  background:black;color:white;
+  font-size:26px;
   transition:.3s;
   text-decoration:none;
 }
-.contact-overlay a:hover{transform:scale(1.2);}
+.contact-overlay a:hover{transform:scale(1.15);}
 
 /* ===== Footer ===== */
 footer{
   text-align:center;
   padding:20px 0;
-  background:#fff;
   color:#222;
   font-size:15px;
-  margin-top:40px;
+  margin-top:30px;
 }
 
-/* ===== Responsive Adjustments ===== */
-@media(max-width:1024px){
+/* ===== Responsive Gallery ===== */
+@media(max-width:1200px){
+  .gallery-item{max-width:220px;height:220px;}
+}
+@media(max-width:992px){
+  .first-row{grid-template-columns:repeat(3,1fr);}
+  .second-row{grid-template-columns:repeat(2,1fr);}
   .gallery-item{max-width:200px;height:200px;}
 }
 @media(max-width:768px){
-  .gallery-item{max-width:150px;height:150px;}
+  .first-row,.second-row{grid-template-columns:repeat(2,1fr);}
+  .gallery-item{max-width:180px;height:180px;}
 }
 @media(max-width:480px){
-  .gallery-item{max-width:120px;height:120px;}
+  .first-row,.second-row{grid-template-columns:repeat(1,1fr);}
+  .gallery-item{max-width:100%;height:200px;}
 }
 </style>
 </head>
@@ -141,20 +176,26 @@ footer{
   <div class="logo">STAR BODY GYM</div>
   <div class="nav-links">
     <a href="index.html#top">Home</a>
-    <a href="index.html#about">About Us</a>
+    <a href="index.html#about">About</a>
     <a href="gallery.html">Gallery</a>
     <a href="clubs.html">Clubs</a>
     <a href="#" id="contact-btn">Contact</a>
   </div>
 </nav>
 
-<div class="gallery-section">
+<div class="gallery-section" id="gallery-section">
   <h2>Our Gallery</h2>
-  <div class="gallery">
+
+  <!-- 4 on first row -->
+  <div class="gallery first-row">
     <div class="gallery-item"><img src="star1.jpg" alt=""></div>
     <div class="gallery-item"><img src="star2.jpg" alt=""></div>
     <div class="gallery-item"><img src="star3.jpg" alt=""></div>
     <div class="gallery-item"><img src="star4.jpg" alt=""></div>
+  </div>
+
+  <!-- 3 on second row -->
+  <div class="gallery second-row">
     <div class="gallery-item"><img src="star5.jpg" alt=""></div>
     <div class="gallery-item"><img src="star6.jpg" alt=""></div>
     <div class="gallery-item"><img src="star7.jpg" alt=""></div>
@@ -175,30 +216,35 @@ footer{
 <script>
 // Fade-in animation
 const galleryItems = document.querySelectorAll('.gallery-item');
+const gallerySection = document.getElementById('gallery-section');
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
-    if(entry.isIntersecting) entry.target.classList.add('visible');
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
   });
 },{threshold:0.2});
 galleryItems.forEach(item => observer.observe(item));
 
-// Contact overlay toggle and close
+// Fade in/out gallery
+window.addEventListener('load', () => gallerySection.classList.add('fade-in'));
+window.addEventListener('beforeunload', () => gallerySection.classList.add('fade-out'));
+window.addEventListener('scroll', () => {
+  const rect = gallerySection.getBoundingClientRect();
+  if (rect.bottom < 0 || rect.top > window.innerHeight) gallerySection.classList.add('fade-out');
+  else gallerySection.classList.remove('fade-out');
+});
+
+// Contact overlay
 const contactBtn = document.getElementById('contact-btn');
 const contactOverlay = document.getElementById('contact-overlay');
-
 contactBtn.addEventListener('click', e=>{
   e.preventDefault();
   contactOverlay.classList.toggle('active');
 });
-
-contactOverlay.addEventListener('click', ()=>{
-  contactOverlay.classList.remove('active');
-});
-
-// Prevent closing when clicking on icons
-contactOverlay.querySelectorAll('a').forEach(icon=>{
-  icon.addEventListener('click', e=>e.stopPropagation());
-});
+contactOverlay.addEventListener('click', ()=>contactOverlay.classList.remove('active'));
+contactOverlay.querySelectorAll('a').forEach(icon=>icon.addEventListener('click', e=>e.stopPropagation()));
 </script>
 
 </body>

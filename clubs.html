@@ -52,17 +52,22 @@ footer{text-align:center;padding:20px 0;background:#fff;font-size:15px}
 @media(max-width:1024px){.club img{height:350px}}
 @media(max-width:600px){.club img{height:300px}.club h3{font-size:20px}.club p{font-size:16px}}
 
-/* ===== Navbar Responsive Fix (Always fits one line) ===== */
+/* ===== Navbar Responsive Fix (Always fits one line & shrinks) ===== */
 @media (max-width:1024px) {
   nav {flex-wrap:nowrap;justify-content:space-between;padding:10px 15px;}
-  .logo {font-size:20px;flex-shrink:0;}
-  .nav-links {flex-wrap:nowrap;gap:12px;flex-shrink:1;}
+  .logo {font-size:22px;flex-shrink:0;}
+  .nav-links {flex-wrap:nowrap;gap:15px;flex-shrink:1;}
   .nav-links a {font-size:14px;white-space:nowrap;}
 }
-@media (max-width:600px) {
-  .logo {font-size:18px;}
-  .nav-links a {font-size:13px;}
-  nav {padding:8px 10px;}
+@media (max-width:768px){
+  .logo{font-size:20px;}
+  .nav-links a{font-size:13px;gap:12px;}
+  nav{padding:8px 12px;}
+}
+@media (max-width:600px){
+  .logo{font-size:18px;}
+  .nav-links a{font-size:12px;gap:10px;}
+  nav{padding:8px 10px;}
 }
 </style>
 </head>
@@ -81,35 +86,30 @@ footer{text-align:center;padding:20px 0;background:#fff;font-size:15px}
 
 <section>
   <h2>Our Clubs</h2>
-
   <div class="club">
     <img src="star11.jpg" alt="Star Body Gym">
     <h3>STAR BODY GYM</h3>
     <p>Star Body GYM Frij Murar Deira Dubai UAE</p>
     <button class="find-more">Find More</button>
   </div>
-
   <div class="club">
     <img src="star22.jpg" alt="Star Body Gym Al Baraha">
     <h3>STAR BODY GYM Br Al Baraha</h3>
     <p>Star Body GYM Branch in Al Baraha Dubai UAE</p>
     <button class="find-more">Find More</button>
   </div>
-
   <div class="club">
     <img src="star33.jpg" alt="Star Body Gym Nad Al Hamar">
     <h3>STAR BODY GYM Br Nad Al Hamar</h3>
     <p>24 HOURS GYM</p>
     <button class="find-more">Find More</button>
   </div>
-
   <div class="club">
     <img src="star44.jpg" alt="Star Body Gym Al Warqa">
     <h3>STAR BODY GYM Br Al Warqa</h3>
     <p>Star Body GYM Branch in Al Warqa 1 Dubai UAE</p>
     <button class="find-more">Find More</button>
   </div>
-
   <div class="club">
     <img src="star55.jpg" alt="Star Body Gym Firj Murar">
     <h3>Star Body Gym Branch - Firj Murar Deira Dubai</h3>
